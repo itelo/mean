@@ -20,7 +20,8 @@
         controller: 'ArticlesListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Articles List'
+          pageTitle: 'Articles List',
+          pageDescription: 'just a big test'
         }
       })
       .state('articles.view', {
