@@ -3,11 +3,16 @@
 
   var applicationModuleName = 'mean';
 
+  var applicationDefaultTitle = 'MEAN.JS';
+  var applicationDefaultDescription = 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js';
+
   var service = {
     applicationEnvironment: window.env,
     applicationModuleName: applicationModuleName,
     applicationModuleVendorDependencies: ['ngResource', 'ngAnimate', 'ngMessages', 'ui.router', 'ui.bootstrap', 'ngFileUpload', 'ngImgCrop'],
-    registerModule: registerModule
+    registerModule: registerModule,
+    applicationDefaultTitle: applicationDefaultTitle,
+    applicationDefaultDescription: applicationDefaultDescription
   };
 
   window.ApplicationConfiguration = service;
