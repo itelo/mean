@@ -1,4 +1,4 @@
-(function () {
+(function (app) {
   'use strict';
 
   angular.module('core')
@@ -18,15 +18,23 @@
       $rootScope.$on('$stateChangeSuccess', listener);
 
       function listener(event, toState) {
-        var applicationCoreTitle = 'MEAN.js',
-          separeteBy = ' - ';
+        var defaultTitle = app.applicationDefaultTitle,
+          separeteBy = ' - ',
+          title;
+
         if (toState.data && toState.data.pageTitle) {
           var stateTitle = $interpolate(toState.data.pageTitle)($state.$current.locals.globals);
-          element.html(applicationCoreTitle + separeteBy + stateTitle);
+          title = defaultTitle + separeteBy + stateTitle;
         } else {
-          element.html(applicationCoreTitle);
+          title = defaultTitle;
+        }
+
+        if (element[0].content) {
+          element[0].content = title;
+        } else {
+          element.html(title);
         }
       }
     }
   }
-}());
+}(ApplicationConfiguration));
