@@ -29,10 +29,10 @@
           title = defaultTitle;
         }
 
-        if (element[0].content) {
-          element[0].content = title;
-        } else {
+        if (element[0].content === undefined) {
           element.html(title);
+        } else {
+          element[0].content = title;
         }
       }
     }
