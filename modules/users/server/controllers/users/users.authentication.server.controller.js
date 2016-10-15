@@ -120,6 +120,7 @@ exports.oauthCallback = function (strategy) {
  */
 exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {
   if (!req.user) {
+    console.log(providerUserProfile);
     // Define a search query fields
     var searchMainProviderIdentifierField = 'providerData.' + providerUserProfile.providerIdentifierField;
     var searchAdditionalProviderIdentifierField = 'additionalProvidersData.' + providerUserProfile.provider + '.' + providerUserProfile.providerIdentifierField;
@@ -169,6 +170,8 @@ exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {
             // Handles case where no email is supplied.
             // See comment: https://github.com/meanjs/mean/pull/1495#issuecomment-246090193
             user.email = providerUserProfile.email;
+
+            user.profileImageURL = providerUserProfile.providerData.image.url;
 
             // And save the user
             user.save(function (err) {
