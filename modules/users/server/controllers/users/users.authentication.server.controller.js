@@ -160,7 +160,7 @@ exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {
               lastName: providerUserProfile.lastName,
               username: availableUsername,
               displayName: providerUserProfile.displayName,
-              profileImageURL: providerUserProfile.providerData.image.url,
+              profileImageURL: providerUserProfile.profileImageURL,
               provider: providerUserProfile.provider,
               providerData: providerUserProfile.providerData
             });
@@ -169,6 +169,7 @@ exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {
             // Handles case where no email is supplied.
             // See comment: https://github.com/meanjs/mean/pull/1495#issuecomment-246090193
             user.email = providerUserProfile.email;
+            user.profileImageURL = providerUserProfile.providerData.image.url;
 
             // And save the user
             user.save(function (err) {
